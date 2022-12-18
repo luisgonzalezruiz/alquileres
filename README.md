@@ -1,4 +1,20 @@
-Esto es una prueba
+En este proyecto usamos passport, por lo tanto debemos ejecutar lo siguiente
+para passport
+php artisan passport:install
+esto llena los datos de la DB que necesita passport
+
+generamos por si se pierda los key
+php artisan passport:keys
+
+
+Esto usamos en laparte donde autenticamos y esta en el ENV
+PASSPORT_LOGIN_ENDPOINT=http://alquileres.test/oauth/token
+PASSPORT_CLIENT_ID=2
+
+//esta linea secreta corresponde al cliente que esta en la db y se actualiza cada vez  que ejecutamos php artisan passport:keys
+PASSPORT_CLIENT_SECRET=nPQZTR1YuMaW1pg9GpapG5k6PTsGzzt5TrHRm0eO
+
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
