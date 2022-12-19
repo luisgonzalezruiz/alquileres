@@ -4,7 +4,12 @@ import { createApp } from 'vue'
 
 import router from './router'
 import store from './store/index'
+
+import { createPinia } from 'pinia'
+
 import App from './views/App'
+
+const store1 = createPinia()
 
 // ****************************************************************************
 // aqui validamos nuestras rutas vue-router, para dar acceso o no al sistema
@@ -50,7 +55,7 @@ createApp({
     components: {
         App,
      }
-}).use(router).use(store).mount("#app")
+}).use(router).use(store).use(store1).mount("#app")
 
 // ****************************************************************************
 

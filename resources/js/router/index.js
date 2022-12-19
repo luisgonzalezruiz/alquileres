@@ -8,6 +8,8 @@ import Login from '../views/Login'
 import Logout from '../views/Logout'
 import Dashboard from '../views/Dashboard'
 
+import Test from '../views/Test'
+
 const routes = [
     {
         path: "/",
@@ -44,6 +46,11 @@ const routes = [
         path: "/about",
         name: "About",
         component: About,
+    },
+    {
+        path: "/test",
+        name: "Test",
+        component: Test,
     },
     {
         path: "/:catchAll(.*)", // Unrecognized path automatically matches 404
