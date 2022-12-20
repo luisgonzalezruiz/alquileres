@@ -11,6 +11,11 @@
     <form autocomplete="off" @submit.prevent="" method="post">
         <div class="field">
             <div class="control">
+                <input type="text" class="input" placeholder="Titulo" v-model="titulo" />
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
                 <input type="text" class="input" placeholder="Id" v-model="prod.id" />
             </div>
         </div>
@@ -37,6 +42,8 @@
 
      <br>
 
+     {{titulo}}
+
 
 
 </div>
@@ -52,12 +59,15 @@ export default {
     const store = useCounterStore()
 
     //console.log(store.productos);
+    const titulo = ref("");
 
     const prod = reactive({
         id: 0,
         nombre: '',
         precio: 0
     });
+
+    //console.log(titulo);
 
 
     function addProducto(){
@@ -76,7 +86,8 @@ export default {
       // you can return the whole store instance to use it in the template
       store,
       addProducto,
-      prod
+      prod,
+      titulo
     }
   },
 }

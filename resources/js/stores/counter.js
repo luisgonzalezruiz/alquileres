@@ -22,6 +22,14 @@ export const useCounterStore = defineStore('counter', {
         } */
         //console.log(myData);
 
+/*         const index = contents.findIndex(added => added.isbn13 === item.isbn13);
+        if (index > -1 ) {
+          ++contents[index].quantity;
+
+          return contents;
+        } */
+
+
         this.productos.push(myData);
 
         //una forma de iterar el array de objetos
