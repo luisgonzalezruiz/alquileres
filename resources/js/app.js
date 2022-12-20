@@ -6,10 +6,12 @@ import router from './router'
 import store from './store/index'
 
 import { createPinia } from 'pinia'
+import piniaPersist from 'pinia-plugin-persist'
 
 import App from './views/App'
 
 const store1 = createPinia()
+store1.use(piniaPersist)
 
 // ****************************************************************************
 // aqui validamos nuestras rutas vue-router, para dar acceso o no al sistema

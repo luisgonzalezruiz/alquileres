@@ -7,11 +7,11 @@
     <input type="text" v-model="title" @keypress.enter="save" >
 
 </div>
-    
+
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive  } from "vue";
 
 export default {
     setup(){
