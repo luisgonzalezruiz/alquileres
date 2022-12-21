@@ -1,6 +1,8 @@
 <template>
 
 <div>
+
+
     <label for="">Esto es una prueba</label>
     <h2> {{ store.count }}</h2>
    <!--  <h2> {{ store.productos }}</h2> -->
@@ -43,8 +45,6 @@
      <br>
 
      {{titulo}}
-
-
 
 </div>
 
