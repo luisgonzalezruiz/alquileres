@@ -23984,11 +23984,11 @@ var getters = {
 var actions = {
   retrieveToken: function retrieveToken(context, credentials) {
     return new Promise(function (resolve, reject) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/login', {
-        username: credentials.username,
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/auth/login', {
+        email: credentials.username,
         password: credentials.password
       }).then(function (response) {
-        //console.log(response)
+        console.log(response);
         var token = response.data.access_token;
         localStorage.setItem('access_token', token);
         // de esta forma llamamos a la mutacion para actualizar el estado

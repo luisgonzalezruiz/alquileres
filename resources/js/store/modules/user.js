@@ -21,12 +21,13 @@ const getters = {
 const actions = {
     retrieveToken(context, credentials) {
         return new Promise((resolve, reject) => {
-            axios.post('/api/login', {
-                username: credentials.username,
+            axios.post('/api/auth/login', {
+                email: credentials.username,
                 password: credentials.password,
             })
             .then(response => {
-                //console.log(response)
+                console.log(response)
+
                 const token = response.data.access_token
                 localStorage.setItem('access_token', token)
                 // de esta forma llamamos a la mutacion para actualizar el estado
