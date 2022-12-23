@@ -131,6 +131,53 @@
 </template>
 
 <script>
+import { ref, reactive } from "vue";
+import { useUserStore } from '../stores/user';
+
+export default {
+  setup() {
+    const store = useUserStore()
+
+    //console.log(store.user);
+
+    const username = ref("");
+    const password = ref("");
+    const error = ref("");
+
+    const usuario = reactive({
+        id: 0,
+        name: '',
+        email: ''
+    });
+
+    //console.log(titulo);
+
+
+    async function login(){
+
+       // de esta forma
+       let credentials={
+            username: this.username,
+            password: this.password,
+       }
+       //this.store.productos.push(prod);
+       await this.store.login(credentials);
+
+    }
+
+    return {
+      // you can return the whole store instance to use it in the template
+      store,
+      login,
+      username, password,usuario
+    }
+  },
+}
+
+</script>
+
+
+<script>
 export default {
   data() {
     return {
