@@ -5,9 +5,11 @@
       <div class="column is-4 is-offset-4">
         <div class="box">
           <h1 class="title">Login</h1>
+
           <div class="notification is-danger" v-if="error">
             <p>{{error}}</p>
           </div>
+
           <form autocomplete="off" @submit.prevent="login" method="post">
             <div class="field">
               <div class="control">
@@ -134,14 +136,19 @@
 import { ref, reactive } from "vue";
 import { useUserStore } from '../stores/user';
 
+import  { useRouter } from 'vue-router';
+//import  { router } from 'vue-router';
+
+
 export default {
   setup() {
     const store = useUserStore()
 
-    //console.log(store.user);
+    // aqui instancio el vue-router
+    const router = useRouter();
 
-    const username = ref("");
-    const password = ref("");
+    const username = ref("luis@gmail.com");
+    const password = ref("12345678");
     const error = ref("");
 
     const usuario = reactive({
@@ -160,8 +167,19 @@ export default {
             username: this.username,
             password: this.password,
        }
-       //this.store.productos.push(prod);
-       await this.store.login(credentials);
+
+       // de esta manera capturamos la promesa desde el store;
+       let response = await this.store.login(credentials)
+
+       if (response.status==200){
+            //console.log(response);
+            // esto es equivalente this.$router.push... que usabamos con vue2 o option API
+            router.push({ name: "dashboard" });
+       }
+
+       if (response.status==401){
+            this.error = response.data.message;
+       }
 
     }
 
@@ -169,7 +187,7 @@ export default {
       // you can return the whole store instance to use it in the template
       store,
       login,
-      username, password,usuario
+      username, password, usuario, error
     }
   },
 }
@@ -177,30 +195,4 @@ export default {
 </script>
 
 
-<script>
-export default {
-  data() {
-    return {
-      username: null,
-      password: null,
-      error: null
-    };
-  },
-  methods: {
-    login() {
-      this.$store
-        .dispatch("user/retrieveToken", {
-          username: this.username,
-          password: this.password
-        })
-        .then(response => {
-          console.log('llegue al dash')
-          this.$router.push({ name: "dashboard" });
-        })
-        .catch(error => {
-          this.error = error.response.data;
-        });
-    }
-  }
-};
-</script>
+

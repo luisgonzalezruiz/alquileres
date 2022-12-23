@@ -13,21 +13,20 @@ import App from './views/App'
 const store1 = createPinia()
 store1.use(piniaPersist)
 
+
+
 // ****************************************************************************
 // aqui validamos nuestras rutas vue-router, para dar acceso o no al sistema
 // ****************************************************************************
-
+/*
 router.beforeEach((to, from, next) => {
     //console.log(!store.getters['user/loggedIn'])
-
     if (to.matched.some(record => record.meta.requiresAuth)) {
       // this route requires auth, check if logged in
       // if not, redirect to login page.
-
       // de esta forma consultamos los getters['user/loggedIn'] si nuestro store maneja modulos
       // y namespace = true
       // console.log(store.getters['user/loggedIn'])
-
       if (!store.getters['user/loggedIn']) {
         //console.log('esto es una prueba')
         //if (!store.getters.loggedIn) {
@@ -37,11 +36,12 @@ router.beforeEach((to, from, next) => {
       } else {
         next()
       }
-
+      //console.log(store1.getters[0]);
     } else {
       next() // make sure to always call next()!
     }
 })
+*/
 
 
 // ****************************************************************************
@@ -61,5 +61,3 @@ createApp({
 
 // ****************************************************************************
 
-
-// app.use(router).mount('#app')

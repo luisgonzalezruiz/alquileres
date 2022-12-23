@@ -10,6 +10,10 @@ import Dashboard from '../views/Dashboard'
 
 import Test from '../views/Test'
 
+// instanciamos nuestro store user y lo hacemos una vez creado pinia
+import {useUserStore} from '../stores/user';
+
+
 const routes = [
     {
         path: "/",
@@ -62,5 +66,18 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+// dee esta forma validamos y protejemos nuestras rutas
+router.beforeEach((to) => {
+    // Esto funcionará porque el enrutador inicia su navegación después de
+    // el enrutador está instalado y pinia también se instalará
+    const store = useUserStore()
+
+    if (to.meta.requiresAuth && !store.isLoggedIn){
+       return '/login'
+    }else{
+        console.log('llegue bien');
+    }
+})
 
 export default router;
