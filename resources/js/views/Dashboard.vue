@@ -58,7 +58,6 @@ export default {
             console.log("beforeMount hook!");
         });
 
-
         // Pasamos por parámetro una función que realiza la lógica deseada
         onMounted(() => {
             console.log("El componente " + name + " ha sido montado.");
