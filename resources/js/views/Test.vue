@@ -44,7 +44,8 @@
 
      <br>
 
-     {{titulo}}
+     {{ prueba  }}
+     {{ otra }}
 
 </div>
 
@@ -55,41 +56,48 @@ import { ref, reactive } from "vue";
 import { useCounterStore } from '../stores/counter';
 
 export default {
-  setup() {
-    const store = useCounterStore()
+    props:{
+        prueba:String,
+        otra:String
+    },
 
-    //console.log(store.productos);
-    const titulo = ref("");
+    setup(props) {
+        const store = useCounterStore()
 
-    const prod = reactive({
-        id: 0,
-        nombre: '',
-        precio: 0
-    });
+        //console.log(store.productos);
+        const titulo = ref("");
 
-    //console.log(titulo);
+        console.log(props.prueba);
+
+        const prod = reactive({
+            id: 0,
+            nombre: '',
+            precio: 0
+        });
+
+        console.log(titulo);
 
 
-    function addProducto(){
-       // de esta forma
-       let dato={
-            id: prod.id,
-            nombre: prod.nombre,
-            precio: prod.precio
-       }
+        function addProducto(){
+        // de esta forma
+        let dato={
+                id: prod.id,
+                nombre: prod.nombre,
+                precio: prod.precio
+        }
 
-       //this.store.productos.push(prod);
-       this.store.addProducto(dato);
-    }
+        //this.store.productos.push(prod);
+        this.store.addProducto(dato);
+        }
 
-    return {
-      // you can return the whole store instance to use it in the template
-      store,
-      addProducto,
-      prod,
-      titulo
-    }
-  },
+        return {
+            // you can return the whole store instance to use it in the template
+            store,
+            addProducto,
+            titulo,
+            prod,
+        }
+    },
 }
 
 </script>

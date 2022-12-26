@@ -174,7 +174,7 @@ export default {
        if (response.status==200){
             //console.log(response);
             // esto es equivalente this.$router.push... que usabamos con vue2 o option API
-            router.push({ name: "dashboard" });
+            router.push({ name: "dashboard", params:{id: 10} });
        }
 
        if (response.status==401){

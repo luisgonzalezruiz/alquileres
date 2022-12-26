@@ -23226,24 +23226,65 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      username: 'luis gonzalez'
-      //count: this.$store.state.user.count
-    };
-  },
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _stores_counter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../stores/counter */ "./resources/js/stores/counter.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var _Test_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Test.vue */ "./resources/js/views/Test.vue");
 
-  computed: {
-    count: function count() {
-      return this.$store.state.user.count;
-    }
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Test: _Test_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  methods: {
-    test: function test() {
-      this.$store.commit('user/setCount', 25);
-      console.log(this.$store.state.user.count);
+  name: "BaseBlock",
+  setup: function setup(props, context) {
+    var name = (0,vue__WEBPACK_IMPORTED_MODULE_0__.getCurrentInstance)().ctx.$options.name;
+    var author = "Manz";
+
+    // de esta forma instanciamos el uso de las rutas
+    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute)();
+    var store = (0,_stores_counter__WEBPACK_IMPORTED_MODULE_1__.useCounterStore)();
+
+    //console.log(store.productos);
+    var ejemplo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("esto es una prueba 3");
+    var prod = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+      id: 0,
+      nombre: '',
+      precio: 0
+    });
+
+    // de esta forma tenemos acceso a los parametros que viene de los links:
+    console.log(route.params.id);
+
+    /* Formato largo */
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount)(function () {
+      console.log("beforeMount hook!");
+    });
+
+    // Pasamos por parámetro una función que realiza la lógica deseada
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      console.log("El componente " + name + " ha sido montado.");
+    });
+    function addProducto() {
+      // de esta forma
+      var dato = {
+        id: prod.id,
+        nombre: prod.nombre,
+        precio: prod.precio
+      };
+
+      //this.store.productos.push(prod);
+      this.store.addProducto(dato);
     }
+    return {
+      // you can return the whole store instance to use it in the template
+      store: store,
+      addProducto: addProducto,
+      prod: prod,
+      ejemplo: ejemplo
+    };
   }
 });
 
@@ -23326,7 +23367,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   //console.log(response);
                   // esto es equivalente this.$router.push... que usabamos con vue2 o option API
                   router.push({
-                    name: "dashboard"
+                    name: "dashboard",
+                    params: {
+                      id: 10
+                    }
                   });
                 }
                 if (response.status == 401) {
@@ -23412,19 +23456,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  setup: function setup() {
+  props: {
+    prueba: String,
+    otra: String
+  },
+  setup: function setup(props) {
     var store = (0,_stores_counter__WEBPACK_IMPORTED_MODULE_1__.useCounterStore)();
 
     //console.log(store.productos);
     var titulo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    console.log(props.prueba);
     var prod = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       id: 0,
       nombre: '',
       precio: 0
     });
-
-    //console.log(titulo);
-
+    console.log(titulo);
     function addProducto() {
       // de esta forma
       var dato = {
@@ -23440,8 +23487,8 @@ __webpack_require__.r(__webpack_exports__);
       // you can return the whole store instance to use it in the template
       store: store,
       addProducto: addProducto,
-      prod: prod,
-      titulo: titulo
+      titulo: titulo,
+      prod: prod
     };
   }
 });
@@ -23537,23 +23584,13 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "title"
 }, "This is your Dashboard, you are logged in :)", -1 /* HOISTED */);
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _this = this;
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h2> {{ $store.state.user.count }}</h2> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.count), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.username), 1 /* TEXT */), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "button",
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _this.$store.commit('user/setCount', 50);
-    }),
-    value: "applicar 1"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "button",
-    onClick: _cache[1] || (_cache[1] = function () {
-      return $options.test && $options.test.apply($options, arguments);
-    }),
-    value: "applicar 2"
-  })], 64 /* STABLE_FRAGMENT */);
+  var _component_Test = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Test");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h2> {{ $store.state.user.count }}</h2> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   <h2> {{ count }}</h2>\n\n  <span>{{ username }}</span>\n\n  <br>\n\n  <input type=\"button\" @click=\"this.$store.commit('user/setCount',50)\" value=\"applicar 1\">\n  <input type=\"button\" @click=\"test\" value=\"applicar 2\">\n "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
+    prueba: $setup.ejemplo,
+    otra: $setup.ejemplo
+  }, null, 8 /* PROPS */, ["prueba", "otra"])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -23775,7 +23812,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.addProducto();
     }),
     value: "Agregar producto"
-  })], 32 /* HYDRATE_EVENTS */), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"button\" @click=\"store.increment(10)\" value=\"applicar 2\"> "), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.titulo), 1 /* TEXT */)]);
+  })], 32 /* HYDRATE_EVENTS */), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"button\" @click=\"store.increment(10)\" value=\"applicar 2\"> "), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.prueba) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.otra), 1 /* TEXT */)]);
 }
 
 /***/ }),
@@ -23939,7 +23976,7 @@ var routes = [{
     requiresAuth: true
   }
 }, {
-  path: '/dashboard',
+  path: '/dashboard/:id',
   name: 'dashboard',
   component: _views_Dashboard__WEBPACK_IMPORTED_MODULE_5__["default"],
   meta: {
