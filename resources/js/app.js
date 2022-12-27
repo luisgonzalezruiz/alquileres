@@ -14,7 +14,6 @@ const store1 = createPinia()
 store1.use(piniaPersist)
 
 
-
 // ****************************************************************************
 // aqui validamos nuestras rutas vue-router, para dar acceso o no al sistema
 // ****************************************************************************

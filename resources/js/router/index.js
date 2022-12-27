@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 
 // Containers
 import Full from '../containers/Full.vue';
+import Admin from '../containers/Admin.vue';
 
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
@@ -24,7 +25,7 @@ const routes = [
     {
         path: "/",
         name: "Home",
-        component: Full,   // con esto usamos la template completa
+        component: Admin,   // con esto usamos la template completa
         children:[
             {
                 path:'/home',
@@ -60,9 +61,16 @@ const routes = [
         component: NotFound,
     },
     {
-        path: "/about",
+        path: "/",
         name: "About",
-        component: About,
+        component: Admin,
+        children:[
+            {
+                path:'/about',
+                name: 'About',
+                component: About  // este es el componente individual
+            }
+        ]
     },
     {
         path: "/test/:id",

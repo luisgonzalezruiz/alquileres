@@ -1,39 +1,39 @@
-
 <template>
 
-<!-- <div> -->
+<div id="wrapper">
 
-    <div class="wrapper">
+    <app-header/>
 
-        <app-header/>
+    <Sidebar/>
 
-        <!-- <Sidebar/> -->
+    <div class="content-page">
 
-        <div class="content-page">
+        <router-view></router-view>
 
-            <router-view></router-view>
-
-        </div>
-
-        <!-- <AppFooter/> -->
+        <AppFooter/>
 
     </div>
 
-<!-- </div> -->
+    <!-- Right Sidebar -->
+    <Rightbar/>
+    <!-- /Right-bar -->
+
+</div>
 
 </template>
 
 
     <script>
     //import nav from '../_nav'
-    import { Header as AppHeader, Sidebar, Footer as AppFooter} from '../components/'
+    import { Header as AppHeader, Sidebar, Footer as AppFooter, Rightbar} from '../components/'
 
     export default {
       name: 'full',
       components: {
         AppHeader,
         Sidebar,
-        AppFooter
+        AppFooter,
+        Rightbar
       },
       data () {
         return {

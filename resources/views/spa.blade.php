@@ -22,7 +22,14 @@
 
 </head>
 
-<body class="loading" data-layout-mode="default" data-layout-color="light" data-topbar-color="dark" data-menu-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='false'>
+<body class="loading"
+        data-layout-mode="default"
+        data-layout-color="light"
+        data-topbar-color="dark"
+        data-menu-position="fixed"
+        data-leftbar-color="light"
+        data-leftbar-size='default'
+        data-sidebar-user='false'>
 
     <div id="app">
         <app></app>
