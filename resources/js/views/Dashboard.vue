@@ -14,7 +14,10 @@
 
  <Test :prueba="ejemplo" :otra="ejemplo"/>
 
-
+ <div>
+    <router-link :to="{ name: 'Test', params:{ id: 15} }">Test</router-link> |
+    <router-link :to="{ name: 'Home' }">Home</router-link>
+</div>
 
 </template>
 

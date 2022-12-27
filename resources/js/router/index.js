@@ -1,4 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
+
+// Containers
+import Full from '../containers/Full.vue';
+
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 
@@ -10,6 +14,8 @@ import Dashboard from '../views/Dashboard'
 
 import Test from '../views/Test'
 
+
+
 // instanciamos nuestro store user y lo hacemos una vez creado pinia
 import {useUserStore} from '../stores/user';
 
@@ -18,7 +24,14 @@ const routes = [
     {
         path: "/",
         name: "Home",
-        component: Home,
+        component: Full,   // con esto usamos la template completa
+        children:[
+            {
+                path:'/home',
+                name: 'Home',
+                component: Home  // este es el componente individual
+            }
+        ]
     },
     {
         path: '/login',
@@ -52,7 +65,7 @@ const routes = [
         component: About,
     },
     {
-        path: "/test",
+        path: "/test/:id",
         name: "Test",
         component: Test,
     },

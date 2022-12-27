@@ -55,6 +55,8 @@
 import { ref, reactive } from "vue";
 import { useCounterStore } from '../stores/counter';
 
+import { useRoute } from 'vue-router';
+
 export default {
     props:{
         prueba:String,
@@ -64,10 +66,15 @@ export default {
     setup(props) {
         const store = useCounterStore()
 
-        //console.log(store.productos);
-        const titulo = ref("");
+        const route = useRoute();
 
-        console.log(props.prueba);
+        //console.log(store.productos);
+        const titulo = ref("hi");
+
+        //console.log(props.prueba);
+
+        // imprimo el parametro que envio desde router-link
+        console.log(route.params.id);
 
         const prod = reactive({
             id: 0,
@@ -75,19 +82,19 @@ export default {
             precio: 0
         });
 
-        console.log(titulo);
+        console.log(titulo.value);
 
 
         function addProducto(){
-        // de esta forma
-        let dato={
-                id: prod.id,
-                nombre: prod.nombre,
-                precio: prod.precio
-        }
+            // de esta forma
+            let dato={
+                    id: prod.id,
+                    nombre: prod.nombre,
+                    precio: prod.precio
+            }
 
-        //this.store.productos.push(prod);
-        this.store.addProducto(dato);
+            //this.store.productos.push(prod);
+            this.store.addProducto(dato);
         }
 
         return {

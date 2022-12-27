@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html class="has-aside-left has-aside-expanded">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <title>Starter | UBold - Responsive Admin Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue SPA Demo</title>
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="ubold/assets/images/favicon.ico">
@@ -20,11 +22,10 @@
 
 </head>
 
-<body>
+<body class="loading" data-layout-mode="default" data-layout-color="light" data-topbar-color="dark" data-menu-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='false'>
 
     <div id="app">
         <app></app>
-        {{-- <notes></notes>  --}}
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
