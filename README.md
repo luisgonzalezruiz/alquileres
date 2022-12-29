@@ -11,7 +11,8 @@ Esto usamos en laparte donde autenticamos y esta en el ENV
 PASSPORT_LOGIN_ENDPOINT=http://alquileres.test/oauth/token
 PASSPORT_CLIENT_ID=2
 
-//esta linea secreta corresponde al cliente que esta en la db y se actualiza cada vez  que ejecutamos php artisan passport:keys
+//esta linea secreta corresponde al cliente que esta en la db y se actualiza cada vez  que ejecutamos 
+php artisan passport:keys
 PASSPORT_CLIENT_SECRET=nPQZTR1YuMaW1pg9GpapG5k6PTsGzzt5TrHRm0eO
 
 
