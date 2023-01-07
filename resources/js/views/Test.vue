@@ -5,6 +5,10 @@
 
     <label for="">Esto es una prueba</label>
     <h2> {{ store.count }}</h2>
+<h2>
+    {{ storeUser.token }}
+</h2>
+
    <!--  <h2> {{ store.productos }}</h2> -->
     <div v-for='product in store.productos' :key='product.id'>
         {{product.id}} {{product.nombre}} {{product.precio}}
@@ -55,6 +59,8 @@
 import { ref, reactive } from "vue";
 import { useCounterStore } from '../stores/counter';
 
+import { useUserStore } from '../stores/user';
+
 import { useRoute } from 'vue-router';
 
 export default {
@@ -65,6 +71,7 @@ export default {
 
     setup(props) {
         const store = useCounterStore()
+        const storeUser = useUserStore()
 
         const route = useRoute();
 
@@ -93,6 +100,10 @@ export default {
                     precio: prod.precio
             }
 
+            // asi obtenemos el tocken almacenado
+            //console.log(this.storeUser.token);
+            console.log(localStorage.getItem('access_token'));
+
             //this.store.productos.push(prod);
             this.store.addProducto(dato);
         }
@@ -100,6 +111,7 @@ export default {
         return {
             // you can return the whole store instance to use it in the template
             store,
+            storeUser,
             addProducto,
             titulo,
             prod,

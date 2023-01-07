@@ -20027,7 +20027,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _stores_counter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../stores/counter */ "./resources/js/stores/counter.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var _stores_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../stores/user */ "./resources/js/stores/user.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+
 
 
 
@@ -20038,7 +20040,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup(props) {
     var store = (0,_stores_counter__WEBPACK_IMPORTED_MODULE_1__.useCounterStore)();
-    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.useRoute)(); //console.log(store.productos);
+    var storeUser = (0,_stores_user__WEBPACK_IMPORTED_MODULE_2__.useUserStore)();
+    var route = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.useRoute)(); //console.log(store.productos);
 
     var titulo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("hi"); //console.log(props.prueba);
     // imprimo el parametro que envio desde router-link
@@ -20057,7 +20060,10 @@ __webpack_require__.r(__webpack_exports__);
         id: prod.id,
         nombre: prod.nombre,
         precio: prod.precio
-      }; //this.store.productos.push(prod);
+      }; // asi obtenemos el tocken almacenado
+      //console.log(this.storeUser.token);
+
+      console.log(localStorage.getItem('access_token')); //this.store.productos.push(prod);
 
       this.store.addProducto(dato);
     }
@@ -20065,6 +20071,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // you can return the whole store instance to use it in the template
       store: store,
+      storeUser: storeUser,
       addProducto: addProducto,
       titulo: titulo,
       prod: prod
@@ -21943,6 +21950,8 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.store.count), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.storeUser.token), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <h2> {{ store.productos }}</h2> "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.store.productos, function (product) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
