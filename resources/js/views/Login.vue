@@ -159,7 +159,6 @@ export default {
 
     //console.log(titulo);
 
-
     async function login(){
 
        // de esta forma

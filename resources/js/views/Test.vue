@@ -1,8 +1,6 @@
 <template>
 
 <div>
-
-
     <label for="">Esto es una prueba</label>
     <h2> {{ store.count }}</h2>
 <h2>
@@ -101,8 +99,8 @@ export default {
             }
 
             // asi obtenemos el tocken almacenado
-            //console.log(this.storeUser.token);
-            console.log(localStorage.getItem('access_token'));
+            console.log(this.storeUser.token);
+            //console.log(localStorage.getItem('access_token'));
 
             //this.store.productos.push(prod);
             this.store.addProducto(dato);

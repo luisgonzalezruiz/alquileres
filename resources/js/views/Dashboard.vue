@@ -56,6 +56,7 @@ export default {
         // de esta forma tenemos acceso a los parametros que viene de los links:
         console.log(route.params.id);
 
+
         /* Formato largo */
         onBeforeMount(() => {
             console.log("beforeMount hook!");
