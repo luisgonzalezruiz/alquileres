@@ -142,6 +142,7 @@ import  { useRouter } from 'vue-router';
 
 export default {
   setup() {
+    // instancio el almacen
     const store = useUserStore()
 
     // aqui instancio el vue-router

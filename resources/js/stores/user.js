@@ -28,6 +28,8 @@ export const useUserStore = defineStore('user', {
             this.token = token_res;
             localStorage.setItem('access_token', this.token)
 
+            //localStorage.setItem('user', this.user)
+
             this.isLoggedIn=true;
             localStorage.setItem('isLoggedIn', this.isLoggedIn)
 
@@ -38,7 +40,6 @@ export const useUserStore = defineStore('user', {
             // router.push(this.returnUrl || '/');
 
             return response;
-
 
         } catch (error) {
             //const alertStore = useAlertStore();
@@ -78,9 +79,9 @@ export const useUserStore = defineStore('user', {
   persist: {
     enabled: true,
     strategies: [
-      { storage: sessionStorage, paths: ['users'] },
+      { storage: sessionStorage, paths: ['user'] },
       //{ storage: localStorage, paths: ['isLoggedIn'] },
-      { storage: localStorage, paths: ['user'] },
+      //{ storage: localStorage, paths: ['user1'] },
     ],
   },
 })

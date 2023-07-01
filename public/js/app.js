@@ -19865,6 +19865,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
+    // instancio el almacen
     var store = (0,_stores_user__WEBPACK_IMPORTED_MODULE_2__.useUserStore)(); // aqui instancio el vue-router
 
     var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.useRouter)();
@@ -20061,8 +20062,9 @@ __webpack_require__.r(__webpack_exports__);
         nombre: prod.nombre,
         precio: prod.precio
       }; // asi obtenemos el tocken almacenado
+      //console.log(this.storeUser.token);
 
-      console.log(this.storeUser.token); //console.log(localStorage.getItem('access_token'));
+      console.log(this.storeUser); //console.log(localStorage.getItem('access_token'));
       //this.store.productos.push(prod);
 
       this.store.addProducto(dato);
@@ -21951,7 +21953,7 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.store.count), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.storeUser.token), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.storeUser.user.id), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <h2> {{ store.productos }}</h2> "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.store.productos, function (product) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -22502,7 +22504,8 @@ var useUserStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)('user', {
                 token_res = response.data.access_token; // update pinia state
 
                 _this.token = token_res;
-                localStorage.setItem('access_token', _this.token);
+                localStorage.setItem('access_token', _this.token); //localStorage.setItem('user', this.user)
+
                 _this.isLoggedIn = true;
                 localStorage.setItem('isLoggedIn', _this.isLoggedIn); // console.log(this.token);
                 // store user details and jwt in local storage to keep user logged in between page refreshes
@@ -22549,12 +22552,10 @@ var useUserStore = (0,pinia__WEBPACK_IMPORTED_MODULE_2__.defineStore)('user', {
     enabled: true,
     strategies: [{
       storage: sessionStorage,
-      paths: ['users']
-    }, //{ storage: localStorage, paths: ['isLoggedIn'] },
-    {
-      storage: localStorage,
       paths: ['user']
-    }]
+    } //{ storage: localStorage, paths: ['isLoggedIn'] },
+    //{ storage: localStorage, paths: ['user1'] },
+    ]
   }
 });
 
