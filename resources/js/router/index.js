@@ -30,7 +30,10 @@ const routes = [
             {
                 path:'/home',
                 name: 'Home',
-                component: Home  // este es el componente individual
+                component: Home,  // este es el componente individual
+                meta: {
+                    requiresAuth: true,
+                }
             }
         ]
     },
@@ -68,7 +71,10 @@ const routes = [
             {
                 path:'/about',
                 name: 'About',
-                component: About  // este es el componente individual
+                component: About,  // este es el componente individual
+                meta: {
+                    requiresAuth: true,
+                }
             }
         ]
     },
@@ -76,6 +82,9 @@ const routes = [
         path: "/test/:id",
         name: "Test",
         component: Test,
+        meta: {
+            requiresAuth: true,
+        }
     },
     {
         path: "/:catchAll(.*)", // Unrecognized path automatically matches 404
@@ -89,7 +98,7 @@ const router = createRouter({
 });
 
 // dee esta forma validamos y protejemos nuestras rutas
-router.beforeEach((to) => {
+router.beforeEach((to, from, next) => {
     // Esto funcionará porque el enrutador inicia su navegación después de
     // el enrutador está instalado y pinia también se instalará
     const store = useUserStore()
@@ -97,8 +106,25 @@ router.beforeEach((to) => {
     if (to.meta.requiresAuth && !store.isLoggedIn){
        return '/login'
     }else{
+        console.log(store.isLoggedIn)
         console.log('llegue bien');
+        next();
     }
+
+/*
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+        //console.log(store.isLoggedIn)
+        if (store.isLoggedIn) {
+            next();
+        } else {
+            next({ name: "login" });
+        }
+    } else {
+        //console.log(store.isLoggedIn);
+        next();
+    }
+*/
+
 })
 
 export default router;

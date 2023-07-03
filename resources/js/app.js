@@ -3,7 +3,7 @@ require('./bootstrap')
 import { createApp } from 'vue'
 
 import router from './router'
-import store from './store/index'
+//import store from './store/index'
 
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'

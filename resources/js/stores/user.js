@@ -18,8 +18,7 @@ export const useUserStore = defineStore('user', {
                 password: credentials.password
             });
 
-           // console.log(response.data.user);
-
+            // console.log(response.data.user);
             // update pinia state
             this.user = response.data.user;
 

@@ -34,6 +34,11 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => 'auth:api'], function() {
     //Route::get('productos',[ProductosController::class,'index'])->name('produtos.index');
     //Route::post('productos',[ProductosController::class,'store']);
+    //Route::get('categorias',[CategoriaController::class,'index']);
+    //Route::get('categorias/{id}',[CategoriaController::class,'show']);
+    //Route::post('categorias',[CategoriaController::class,'store']);
+    //Route::put('categorias/{id}',[CategoriaController::class,'update']);
+    //Route::delete('categorias/{id}',[CategoriaController::class,'destroy']);
 });
 
 /*

@@ -1,8 +1,9 @@
 <template>
 
   <h1 class="title">This is your Dashboard, you are logged in :)</h1>
+  {{dataUser.user.first_name }} {{ dataUser.user.last_name }}
    <!-- <h2> {{ $store.state.user.count }}</h2> -->
-<!--   <h2> {{ count }}</h2>
+   <!-- <h2> {{ count }}</h2>
 
   <span>{{ username }}</span>
 
@@ -24,6 +25,7 @@
 <script>
 import { ref, reactive, onBeforeMount, onMounted, getCurrentInstance } from "vue";
 import { useCounterStore } from '../stores/counter';
+import { useUserStore } from '../stores/user';
 import { useRoute } from 'vue-router';
 
 import Test from './Test.vue';
@@ -43,6 +45,8 @@ export default {
         const route = useRoute();
 
         const store = useCounterStore()
+
+        const dataUser = useUserStore()
 
         //console.log(store.productos);
         const ejemplo = ref("esto es una prueba 3");
@@ -65,6 +69,7 @@ export default {
         // Pasamos por parámetro una función que realiza la lógica deseada
         onMounted(() => {
             console.log("El componente " + name + " ha sido montado.");
+            console.log(dataUser.user);
         });
 
         function addProducto(){
@@ -84,7 +89,8 @@ export default {
             store,
             addProducto,
             prod,
-            ejemplo
+            ejemplo,
+            dataUser
         }
     },
 }

@@ -178,7 +178,8 @@ export default {
        }
 
        if (response.status==401){
-            this.error = response.data.message;
+            this.error = response.data.message;   // este mensaje viene del backend
+            //this.error = "No esta autorizado!";
        }
 
     }
