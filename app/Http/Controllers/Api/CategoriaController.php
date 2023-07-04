@@ -8,84 +8,93 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
 
-        $categorias = Categoria::all();
-        return response()->json([
-            'data'=>$categorias,
-            'mensaje'=>'Successfully Retrieved categorias'
-        ],200);
+    public function __construct()
+    {
+        // de esta manera indicamos que si o si necesita autenticacion
+        $this->middleware('auth:api');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function index()
+    {
+        //$this->authorize('');
+
+        try{
+            $categorias = Categoria::all();
+
+            return response()->json([
+                'data'=>$categorias,
+                'mensaje'=>'Successfully Retrieved categorias'
+            ],200);
+
+        }catch (\Exception $exp) {
+
+            //abort(404);
+
+        }
+
+    }
+
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+
+        $categoria = new Categoria();
+        $categoria->cat_descripcion = $request->cat_descripcion;
+        $categoria->save();
+
+        return response()->json([
+            'data'=>$categoria,
+            'mensaje'=>'Successfully stored categorias'
+        ],200);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Categoria $categoria)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Categoria $categoria)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Categoria $categoria)
+
+    public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::all()->find($id);
+
+        $categoria = new Categoria();
+        $categoria->cat_descripcion = $request->cat_descripcion;
+        $categoria->save();
+
+        return response()->json([
+            'data'=> $categoria,
+            'mensaje'=>'Successfully Updated'
+        ],200);
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Categoria $categoria)
+
+    public function destroy($id)
     {
-        //
+        $categoria = Categoria::all()->find($id);
+        $categoria->delete();
+
+        return response()->json([
+            'data'=> $id,
+            'mensaje'=>'Successfully Deleted'
+        ],200);
     }
+
 }

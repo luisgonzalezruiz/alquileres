@@ -56,7 +56,7 @@ createApp({
     components: {
         App,
      }
-}).use(router).use(store).use(store1).mount("#app")
+}).use(router).use(store1).mount("#app")
 
 // ****************************************************************************
 
