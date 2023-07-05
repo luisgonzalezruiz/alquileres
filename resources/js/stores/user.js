@@ -49,20 +49,16 @@ export const useUserStore = defineStore('user', {
         }
     },
     login1(credentials) {
-
         return new Promise((resolve, reject) => {
             axios.post('/api/auth/login', {
                 email: credentials.username,
                 password: credentials.password,
             })
             .then(response => {
-
                 console.log(response)
-
                 const token_res = response.data.access_token
                 //localStorage.setItem('access_token', token)
                 this.token = token_res;
-
                 resolve(response)
             })
             .catch(error => {
@@ -70,7 +66,6 @@ export const useUserStore = defineStore('user', {
                 reject(error)
             })
         })
-
     },
 
   },

@@ -3,8 +3,9 @@
 <div>
     <label for="">Esto es una prueba</label>
     <h2> {{ store.count }}</h2>
+    {{ baseUrl }}
 <h2>
-    {{ storeUser.user.id }}
+    {{ storeUser.user.first_name }}
 </h2>
 
    <!--  <h2> {{ store.productos }}</h2> -->
@@ -34,7 +35,7 @@
                 <input type="text" class="input" placeholder="Precio" v-model="prod.precio" />
             </div>
         </div>
-<!--         <button type="submit" class="button is-primary">Sign in</button> -->
+       <!--  <button type="submit" class="button is-primary">Sign in</button> -->
 
         <input type="button" @click="addProducto()" value="Agregar producto">
 
@@ -61,6 +62,8 @@ import { useUserStore } from '../stores/user';
 
 import { useRoute } from 'vue-router';
 
+
+
 export default {
     props:{
         prueba:String,
@@ -68,9 +71,12 @@ export default {
     },
 
     setup(props) {
+
+        const baseUrl = process.env.MIX_APP_URL;
+        //console.log(baseUrl);
+
         const store = useCounterStore()
         const storeUser = useUserStore()
-
         const route = useRoute();
 
         //console.log(store.productos);
@@ -88,7 +94,6 @@ export default {
         });
 
         console.log(titulo.value);
-
 
         function addProducto(){
             // de esta forma
@@ -114,6 +119,7 @@ export default {
             addProducto,
             titulo,
             prod,
+            baseUrl
         }
     },
 }
