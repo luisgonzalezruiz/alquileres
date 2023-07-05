@@ -102,7 +102,7 @@ router.beforeEach((to, from, next) => {
     // Esto funcionará porque el enrutador inicia su navegación después de
     // el enrutador está instalado y pinia también se instalará
     const store = useUserStore()
-
+/*
     if (to.meta.requiresAuth && !store.isLoggedIn){
        return '/login'
     }else{
@@ -110,8 +110,8 @@ router.beforeEach((to, from, next) => {
         console.log('llegue bien');
         next();
     }
+*/
 
-/*
     if (to.matched.some((record) => record.meta.requiresAuth)) {
         //console.log(store.isLoggedIn)
         if (store.isLoggedIn) {
@@ -123,7 +123,7 @@ router.beforeEach((to, from, next) => {
         //console.log(store.isLoggedIn);
         next();
     }
-*/
+
 
 })
 

@@ -3,7 +3,7 @@ require('./bootstrap')
 import { createApp } from 'vue'
 
 import router from './router'
-//import store from './store/index'
+import store from './store_old/index'
 
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
@@ -56,7 +56,7 @@ createApp({
     components: {
         App,
      }
-}).use(router).use(store1).mount("#app")
+}).use(router).use(store).use(store1).mount("#app")
 
 // ****************************************************************************
 
