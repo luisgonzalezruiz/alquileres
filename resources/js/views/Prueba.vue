@@ -8,12 +8,16 @@
 
 </div>
 
+
+
+
 </template>
 
 <script>
 import { ref, reactive  } from "vue";
 
 export default {
+    name: "prueba",
     setup(){
         const notes = ref([]);
         const title = ref("");
@@ -31,5 +35,8 @@ export default {
     },
 
 }
+
+
+
 
 </script>

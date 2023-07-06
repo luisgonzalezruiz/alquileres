@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="container">
+<!--     <div class="container">
       <div class="column is-4 is-offset-4">
         <div class="box">
           <h1 class="title">Login</h1>
@@ -25,7 +25,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="loading auth-fluid-pages pb-0">
             <div class="auth-fluid">
@@ -56,16 +56,16 @@
                             <p class="text-muted mb-4">Enter your email address and password to access account.</p>
 
                             <!-- form -->
-                            <form action="#">
+                            <form autocomplete="off" @submit.prevent="login" method="post">
                                 <div class="mb-3">
                                     <label for="emailaddress" class="form-label">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                    <input class="form-control" type="email" v-model="username"  required="" placeholder="Enter your email">
                                 </div>
                                 <div class="mb-3">
                                     <a href="auth-recoverpw-2.html" class="text-muted float-end"><small>Forgot your password?</small></a>
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                        <input type="password" v-model="password" class="form-control" placeholder="Enter your password">
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>

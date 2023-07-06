@@ -14,7 +14,7 @@ import Logout from '../views/Logout'
 import Dashboard from '../views/Dashboard'
 
 import Test from '../views/Test'
-
+import Prueba from '../views/Prueba'
 
 
 // instanciamos nuestro store user y lo hacemos una vez creado pinia
@@ -85,6 +85,21 @@ const routes = [
         meta: {
             requiresAuth: true,
         }
+    },
+    {
+        path: "/",
+        name: "Prueba",
+        component: Admin,
+        children:[
+            {
+                path:'/prueba',
+                name: 'Prueba',
+                component: Prueba,  // este es el componente individual
+                meta: {
+                    requiresAuth: true,
+                }
+            }
+        ]
     },
     {
         path: "/:catchAll(.*)", // Unrecognized path automatically matches 404

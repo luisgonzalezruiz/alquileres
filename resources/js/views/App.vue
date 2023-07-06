@@ -8,11 +8,11 @@
 
 <script>
 
-import Notes from "./Notes.vue"
+//import Notes from "./Notes1.vue"
 export default {
     name: "App",
     components:{
-        Notes,
+        //Notes,
     },
 };
 </script>
