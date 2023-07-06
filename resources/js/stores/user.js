@@ -13,10 +13,18 @@ export const useUserStore = defineStore('user', {
   actions: {
     async login(credentials) {
         try {
-            const response = await axios.post('/api/auth/login', {
+            let data = {
+                email:credentials.username,
+                password: credentials.password
+            }
+            /*const response = await axios.post('/api/auth/login', {
                 email: credentials.username,
                 password: credentials.password
-            });
+            });*/
+
+            const response = await axios.post('/api/auth/login', data );
+
+            // console.log(response.status);
 
             // console.log(response.data.user);
             // update pinia state
@@ -44,6 +52,8 @@ export const useUserStore = defineStore('user', {
             //const alertStore = useAlertStore();
             //alertStore.error(error);
             //console.log(error.response.data);
+            console.log(error.response.status);
+
             return error.response;
             //reject(error)
         }

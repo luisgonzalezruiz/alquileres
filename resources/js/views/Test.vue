@@ -4,9 +4,9 @@
     <label for="">Esto es una prueba</label>
     <h2> {{ store.count }}</h2>
     {{ baseUrl }}
-<h2>
-    {{ storeUser.user.first_name }}
-</h2>
+    <h2>
+        {{ storeUser.user.first_name }}
+    </h2>
 
    <!--  <h2> {{ store.productos }}</h2> -->
     <div v-for='product in store.productos' :key='product.id'>
@@ -56,11 +56,12 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { useCounterStore } from '../stores/counter';
+import { watchEffect } from 'vue';
+import { useRoute } from 'vue-router';
 
+import { useCounterStore } from '../stores/counter';
 import { useUserStore } from '../stores/user';
 
-import { useRoute } from 'vue-router';
 
 
 
@@ -111,6 +112,12 @@ export default {
             //this.store.productos.push(prod);
             this.store.addProducto(dato);
         }
+
+        // aqui podemos estar escuchando lo que pasa en el componente
+        // es decir si cambia el valor de una variable este se va disparar
+        watchEffect(() => {
+            if (prod.id > 0) alert('Product id cambiado');
+        });
 
         return {
             // you can return the whole store instance to use it in the template
