@@ -1,32 +1,6 @@
 <template>
   <div>
 
-<!--     <div class="container">
-      <div class="column is-4 is-offset-4">
-        <div class="box">
-          <h1 class="title">Login</h1>
-
-          <div class="notification is-danger" v-if="error">
-            <p>{{error}}</p>
-          </div>
-
-          <form autocomplete="off" @submit.prevent="login" method="post">
-            <div class="field">
-              <div class="control">
-                <input type="email" class="input" placeholder="user@example.com" v-model="username" />
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <input type="password" class="input" v-model="password" />
-              </div>
-            </div>
-            <button type="submit" class="button is-primary">Sign in</button>
-          </form>
-        </div>
-      </div>
-    </div> -->
-
     <div class="loading auth-fluid-pages pb-0">
             <div class="auth-fluid">
                 <!--Auth fluid left content -->
@@ -133,7 +107,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive,onBeforeMount, onMounted } from "vue";
 import { useUserStore } from '../stores/user';
 
 import  { useRouter } from 'vue-router';
@@ -156,6 +130,17 @@ export default {
         id: 0,
         name: '',
         email: ''
+    });
+
+    onBeforeMount(() => {
+        //console.log("beforeMount hook!" + store.isLoggedIn);
+        if (store.isLoggedIn) {
+           router.push('/');
+        }
+    });
+
+    onMounted(() => {
+        //router.push('/');
     });
 
     //console.log(titulo);

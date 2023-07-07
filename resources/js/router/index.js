@@ -12,6 +12,7 @@ import NotFound from '../views/NotFound'
 import Login from '../views/Login'
 import Logout from '../views/Logout'
 import Dashboard from '../views/Dashboard'
+import Categoria from '../views/Categoria/List'
 
 import Test from '../views/Test'
 import Prueba from '../views/Prueba'
@@ -49,6 +50,21 @@ const routes = [
         meta: {
             requiresAuth: true,
         }
+    },
+    {
+        path: "/",
+        name: "Categoria",
+        component: Admin,   // con esto usamos la template completa
+        children:[
+            {
+                path:'/categoria/list',
+                name: 'Categoria',
+                component: Categoria,  // este es el componente individual
+                meta: {
+                    requiresAuth: true,
+                }
+            }
+        ]
     },
     {
         path: '/dashboard/:id',
@@ -137,6 +153,11 @@ router.beforeEach((to, from, next) => {
     } else {
         //console.log(store.isLoggedIn);
         next();
+
+        // intento llevar al home, si ya esta loguea y el usuario tipea el login en el url
+        //if (store.isLoggedIn) {
+        //    next('/');
+        //}
     }
 
 

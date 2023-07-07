@@ -3,7 +3,6 @@
 <div class="left-side-menu">
 
     <div class="h-100" data-simplebar>
-
         <!-- User box -->
         <div class="user-box text-center">
             <img src="ubold/assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
@@ -53,10 +52,16 @@
                     <a href="#sidebarDashboards" data-bs-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="badge bg-success rounded-pill float-end">4</span>
-                        <span> Dashboards </span>
+                        <span> Configuraciones </span>
                     </a>
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
+                            <li :class="[currentPage().includes('categoria') ? activeClass : '', 'nav-item']">
+                                <router-link to="/categoria/list">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span v-on:click="test">Categorias</span>
+                                </router-link>
+                            </li>
                             <li :class="[currentPage().includes('home') ? activeClass : '', 'nav-item']">
                                 <router-link to="/home">
                                     <i class="fa fa-circle-o"></i>
