@@ -57,7 +57,7 @@
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li :class="[currentPage().includes('categoria') ? activeClass : '', 'nav-item']">
-                                <router-link to="/categoria/list">
+                                <router-link to="/categorias">
                                     <i class="fa fa-circle-o"></i>
                                     <span v-on:click="test">Categorias</span>
                                 </router-link>

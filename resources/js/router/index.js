@@ -57,7 +57,7 @@ const routes = [
         component: Admin,   // con esto usamos la template completa
         children:[
             {
-                path:'/categoria/list',
+                path:'/categorias',
                 name: 'Categoria',
                 component: Categoria,  // este es el componente individual
                 meta: {

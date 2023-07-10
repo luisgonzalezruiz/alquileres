@@ -14,7 +14,7 @@
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
 
-            <div class="content-page">
+            <div id="content" class="content-page">
 
                 <router-view></router-view>
 
@@ -46,7 +46,7 @@
     import { Header as AppHeader, Sidebar, Footer as AppFooter, Rightbar} from '../components/'
 
     export default {
-      name: 'full',
+      name: 'admin',
       components: {
         AppHeader,
         Sidebar,
