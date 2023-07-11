@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -19,21 +21,18 @@ class CategoriaController extends Controller
     public function index()
     {
         //$this->authorize('');
-
         try{
-            $categorias = Categoria::all();
+            $categorias = Categoria::paginate(5);
+            //return response()->json($categorias);
 
-            return response()->json([
-                'data'=>$categorias,
-                'mensaje'=>'Successfully Retrieved categorias'
-            ],200);
+             return response()->json([
+                 'data'=>$categorias,
+                 'mensaje'=>'Successfully Retrieved categorias'
+             ],200);
 
         }catch (\Exception $exp) {
-
             //abort(404);
-
         }
-
     }
 
 

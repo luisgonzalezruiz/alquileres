@@ -12,7 +12,7 @@ import NotFound from '../views/NotFound'
 import Login from '../views/Login'
 import Logout from '../views/Logout'
 import Dashboard from '../views/Dashboard'
-import Categoria from '../views/Categoria/List'
+import CategoriaList from '../views/Categoria/List'
 
 import Test from '../views/Test'
 import Prueba from '../views/Prueba'
@@ -52,14 +52,14 @@ const routes = [
         }
     },
     {
-        path: "/",
+        path: "/categorias",
         name: "Categoria",
         component: Admin,   // con esto usamos la template completa
         children:[
             {
-                path:'/categorias',
+                path:'',
                 name: 'Categoria',
-                component: Categoria,  // este es el componente individual
+                component: CategoriaList,  // este es el componente individual
                 meta: {
                     requiresAuth: true,
                 }

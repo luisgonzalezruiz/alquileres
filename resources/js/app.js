@@ -8,6 +8,9 @@ import store from './store_old/index'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist'
 
+import {  Bootstrap5Pagination, Bootstrap4Pagination  } from 'laravel-vue-pagination';
+//import VuePaginate from 'vue-paginate'
+
 import App from './views/App'
 
 const store1 = createPinia()

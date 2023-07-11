@@ -1,3 +1,5 @@
+https://runebook.dev/es/docs/vue/api/sfc-script-setup
+
 En este proyecto usamos passport, por lo tanto debemos ejecutar lo siguiente
 para passport
 php artisan passport:install

@@ -308,7 +308,7 @@ export default {
   name: 'sidebar',
   data() {
       return {
-          activeClass:'active'
+          activeClass:'activeMenu'
       };
   },
   components: {
@@ -357,7 +357,7 @@ export default {
     cursor:pointer;
   }
 
-  .active{
+  .activeMenu{
     opacity: 0.9;
     visibility: visible;
     border-left-color: rgb(182, 77, 177);
