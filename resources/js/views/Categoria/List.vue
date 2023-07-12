@@ -44,7 +44,7 @@
                                 <div class="col-lg-4">
                                     <div class="text-lg-end">
                                         <button class="btn btn-danger waves-effect waves-light mb-2 me-2"
-                                            data-bs-toggle="modal" data-bs-target="#theModal">
+                                            data-bs-toggle="modal" data-bs-target="#addModal">
                                             <i class="mdi mdi-plus-circle me-1"></i> Add New
                                         </button>
                                         <!-- <button type="button" class="btn btn-danger waves-effect waves-light mb-2 me-2"><i class="mdi mdi-basket me-1"></i> Add New Order</button> -->
@@ -96,7 +96,7 @@
                                             <td>{{categoria.cat_codigo}}</td>
                                             <td>{{categoria.cat_descripcion}}</td>
                                             <td>{{categoria.created_at}} </td>
-                                            <!--  <td>
+                                             <!-- <td>
                                                 <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                 <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                                 <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
@@ -119,25 +119,6 @@
                                 </table>
                             </div>
 
-<!--                             <ul class="pagination pagination-rounded justify-content-end my-2">
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                        <span aria-hidden="true">«</span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                        <span aria-hidden="true">»</span>
-                                        <span class="visually-hidden">Next</span>
-                                    </a>
-                                </li>
-                            </ul> -->
                             <ul class="pagination pagination-rounded justify-content-end my-2">
                                 <Bootstrap5Pagination  :data="categorias"  @pagination-change-page="getResults" />
                             </ul>
@@ -148,31 +129,73 @@
             </div>
             <!-- end row -->
 
+            <!-- Modal -->
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-light">
+                            <h4 class="modal-title" id="myCenterModalLabel">Agregar Categoría</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <form>
+                                <!-- <div class="mb-3"> -->
+                                <input type="text" class="form-control" hidden id="name" placeholder="">
+                                <!-- </div> -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Descripcion</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Ingrese la descripcion">
+                                </div>
+
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
+                                    <button type="button" class="btn btn-danger waves-effect waves-light" data-bs-dismiss="modal" @click="close()">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <!-- End Modal -->
+
         </div>
 
-    </div>
+    </div> <!-- en content-fluid -->
+</div>  <!-- end content -->
 
-</div>
 </template>
 
 
 <script setup>
-/*
-    import { ref } from 'vue';
+
+    import {  ref, reactive, onBeforeMount, onMounted, getCurrentInstance  } from 'vue';
     import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 
     const categorias = ref({});
+
+    onMounted(async () => {
+           //await load();
+           await getResults();
+    });
+
     const getResults = async (page = 1) => {
         const res = await axios.get('/api/categorias?page=' + page);
         categorias.value = res.data.data;
     }
-    getResults();
-*/
+
+    function close(){
+        alert('esto cierra el modal');
+    }
+    //getResults();
+
 </script>
 
 
-<script>
 
+
+
+<script>
+/*
 
 import { ref, reactive, onBeforeMount, onMounted, getCurrentInstance  } from "vue";
 import { Bootstrap5Pagination } from 'laravel-vue-pagination';
@@ -218,5 +241,6 @@ export default {
     components:{ Bootstrap5Pagination },
 }
 
+*/
 
 </script>

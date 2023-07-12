@@ -19342,9 +19342,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var __default__ = {
-  name: "Categorias",
-  setup: function setup() {
+/*
+
+import { ref, reactive, onBeforeMount, onMounted, getCurrentInstance  } from "vue";
+import { Bootstrap5Pagination } from 'laravel-vue-pagination';
+
+export default {
+    name: "Categorias",
+    setup(){
+        const categorias = ref({});
+
+        onMounted(async () => {
+           //await load();
+           await getResults();
+        });
+
+        //onMounted(async 3() => {
+        //    const res = await axios.get('/api/categorias');
+        //    categorias.value = res.data;
+        //    console.log(res);
+        //});
+
+        async function getResults(page = 1){
+            const res = await axios.get('/api/categorias?page=' + page);
+            categorias.value = await res.json();
+            //console.log(categorias.value);
+        }
+
+        // async function load(){
+        //     const res = await axios.get('/api/categorias');
+        //     categorias.value = res.data;
+        // }
+
+        function save(){
+            //notes.value.push(title.value);
+            title.value = "";
+        }
+
+        return {
+            categorias,
+            save,
+            getResults
+        }
+    },
+    components:{ Bootstrap5Pagination },
+}
+
+*/
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  __name: 'List',
+  setup: function setup(__props, _ref) {
+    var __expose = _ref.expose;
+
+    __expose();
+
     var categorias = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -19360,22 +19412,10 @@ var __default__ = {
           }
         }
       }, _callee);
-    }))); //onMounted(async () => {
-    //    const res = await axios.get('/api/categorias');
-    //    categorias.value = res.data;
-    //    console.log(res);
-    //});
+    })));
 
-    function getResults() {
-      return _getResults.apply(this, arguments);
-    } // async function load(){
-    //     const res = await axios.get('/api/categorias');
-    //     categorias.value = res.data;
-    // }
-
-
-    function _getResults() {
-      _getResults = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var getResults = /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var page,
             res,
             _args2 = arguments;
@@ -19389,56 +19429,30 @@ var __default__ = {
 
               case 3:
                 res = _context2.sent;
-                _context2.next = 6;
-                return res.json();
+                categorias.value = res.data.data;
 
-              case 6:
-                categorias.value = _context2.sent;
-
-              case 7:
+              case 5:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
       }));
-      return _getResults.apply(this, arguments);
-    }
 
-    function save() {
-      //notes.value.push(title.value);
-      title.value = "";
-    }
+      return function getResults() {
+        return _ref3.apply(this, arguments);
+      };
+    }();
 
-    return {
-      categorias: categorias,
-      save: save,
-      getResults: getResults
-    };
-  },
-  components: {
-    Bootstrap5Pagination: laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2__.Bootstrap5Pagination
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/Object.assign(__default__, {
-  setup: function setup(__props, _ref2) {
-    var __expose = _ref2.expose;
-
-    __expose();
-    /*
-        import { ref } from 'vue';
-        import { Bootstrap5Pagination } from 'laravel-vue-pagination';
-    
-        const categorias = ref({});
-        const getResults = async (page = 1) => {
-            const res = await axios.get('/api/categorias?page=' + page);
-            categorias.value = res.data.data;
-        }
-        getResults();
-    */
+    function close() {
+      alert('esto cierra el modal');
+    } //getResults();
 
 
     var __returned__ = {
+      categorias: categorias,
+      getResults: getResults,
+      close: close,
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
       reactive: vue__WEBPACK_IMPORTED_MODULE_1__.reactive,
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_1__.onBeforeMount,
@@ -19456,7 +19470,7 @@ var __default__ = {
     });
     return __returned__;
   }
-}));
+});
 
 /***/ }),
 
@@ -21458,7 +21472,7 @@ var _hoisted_13 = {
   "class": "me-3"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-4\"><div class=\"text-lg-end\"><button class=\"btn btn-danger waves-effect waves-light mb-2 me-2\" data-bs-toggle=\"modal\" data-bs-target=\"#theModal\"><i class=\"mdi mdi-plus-circle me-1\"></i> Add New </button><!-- &lt;button type=&quot;button&quot; class=&quot;btn btn-danger waves-effect waves-light mb-2 me-2&quot;&gt;&lt;i class=&quot;mdi mdi-basket me-1&quot;&gt;&lt;/i&gt; Add New Order&lt;/button&gt; --><!-- &lt;button type=&quot;button&quot; class=&quot;btn btn-light waves-effect mb-2&quot;&gt;Export&lt;/button&gt; --><!-- &lt;div class=&quot;dropdown float-end&quot;&gt;\n                                            &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle arrow-none text-muted&quot;\n                                                data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;\n                                                &lt;i class=&#39;mdi mdi-dots-horizontal font-18&#39;&gt;&lt;/i&gt;\n                                            &lt;/a&gt;\n                                            &lt;div class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;\n                                                &lt;a href=&quot;javascript:void(0);&quot; class=&quot;dropdown-item&quot;&gt;\n                                                    &lt;i class=&#39;mdi mdi-attachment me-1&#39;&gt;&lt;/i&gt;Exportar PDF\n                                                &lt;/a&gt;\n                                                &lt;a href=&quot;javascript:void(0);&quot; class=&quot;dropdown-item&quot;&gt;\n                                                    &lt;i class=&#39;mdi mdi-pencil-outline me-1&#39;&gt;&lt;/i&gt;Exportar Excel\n                                                &lt;/a&gt;\n                                            &lt;/div&gt;\n                                        &lt;/div&gt; --><div class=\"btn-group dropdown float-end\"><a href=\"javascript: void(0);\" class=\"table-action-btn dropdown-toggle arrow-none btn btn-light btn-md\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"mdi mdi-dots-horizontal\"></i></a><div class=\"dropdown-menu dropdown-menu-end\"><a class=\"dropdown-item\" href=\"#\"><i class=\"fe-align-justify me-2 text-muted font-18 vertical-middle\"></i>Exportar PDF</a><a class=\"dropdown-item\" href=\"#\"><i class=\"mdi mdi-check-all me-2 text-muted font-18 vertical-middle\"></i>Exportar Excel</a><a class=\"dropdown-item\" href=\"#\"><i class=\"fe-alert-triangle me-2 text-muted font-18 vertical-middle\"></i>Imprimir</a></div></div></div></div>", 1);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-4\"><div class=\"text-lg-end\"><button class=\"btn btn-danger waves-effect waves-light mb-2 me-2\" data-bs-toggle=\"modal\" data-bs-target=\"#addModal\"><i class=\"mdi mdi-plus-circle me-1\"></i> Add New </button><!-- &lt;button type=&quot;button&quot; class=&quot;btn btn-danger waves-effect waves-light mb-2 me-2&quot;&gt;&lt;i class=&quot;mdi mdi-basket me-1&quot;&gt;&lt;/i&gt; Add New Order&lt;/button&gt; --><!-- &lt;button type=&quot;button&quot; class=&quot;btn btn-light waves-effect mb-2&quot;&gt;Export&lt;/button&gt; --><!-- &lt;div class=&quot;dropdown float-end&quot;&gt;\n                                            &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle arrow-none text-muted&quot;\n                                                data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;\n                                                &lt;i class=&#39;mdi mdi-dots-horizontal font-18&#39;&gt;&lt;/i&gt;\n                                            &lt;/a&gt;\n                                            &lt;div class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;\n                                                &lt;a href=&quot;javascript:void(0);&quot; class=&quot;dropdown-item&quot;&gt;\n                                                    &lt;i class=&#39;mdi mdi-attachment me-1&#39;&gt;&lt;/i&gt;Exportar PDF\n                                                &lt;/a&gt;\n                                                &lt;a href=&quot;javascript:void(0);&quot; class=&quot;dropdown-item&quot;&gt;\n                                                    &lt;i class=&#39;mdi mdi-pencil-outline me-1&#39;&gt;&lt;/i&gt;Exportar Excel\n                                                &lt;/a&gt;\n                                            &lt;/div&gt;\n                                        &lt;/div&gt; --><div class=\"btn-group dropdown float-end\"><a href=\"javascript: void(0);\" class=\"table-action-btn dropdown-toggle arrow-none btn btn-light btn-md\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"><i class=\"mdi mdi-dots-horizontal\"></i></a><div class=\"dropdown-menu dropdown-menu-end\"><a class=\"dropdown-item\" href=\"#\"><i class=\"fe-align-justify me-2 text-muted font-18 vertical-middle\"></i>Exportar PDF</a><a class=\"dropdown-item\" href=\"#\"><i class=\"mdi mdi-check-all me-2 text-muted font-18 vertical-middle\"></i>Exportar Excel</a><a class=\"dropdown-item\" href=\"#\"><i class=\"fe-alert-triangle me-2 text-muted font-18 vertical-middle\"></i>Imprimir</a></div></div></div></div>", 1);
 
 var _hoisted_15 = {
   "class": "table-responsive"
@@ -21516,8 +21530,75 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_19 = {
   "class": "pagination pagination-rounded justify-content-end my-2"
 };
+var _hoisted_20 = {
+  "class": "modal fade",
+  id: "addModal",
+  tabindex: "-1",
+  role: "dialog",
+  "aria-hidden": "true"
+};
+var _hoisted_21 = {
+  "class": "modal-dialog modal-dialog-centered"
+};
+var _hoisted_22 = {
+  "class": "modal-content"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "modal-header bg-light"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "modal-title",
+  id: "myCenterModalLabel"
+}, "Agregar Categoría"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "button",
+  "class": "btn-close",
+  "data-bs-dismiss": "modal",
+  "aria-label": "Close"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
+  "class": "modal-body p-4"
+};
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  "class": "form-control",
+  hidden: "",
+  id: "name",
+  placeholder: ""
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "mb-3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "name",
+  "class": "form-label"
+}, "Descripcion"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  "class": "form-control",
+  id: "name",
+  placeholder: "Ingrese la descripcion"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "text-end"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-success waves-effect waves-light"
+}, "Save", -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Start Content"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start page title "), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end page title "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Start Content"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start page title "), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end page title "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "search",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return _ctx.search = $event;
@@ -21536,15 +21617,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(categoria.created_at), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <td>\n                                                <a href=\"javascript:void(0);\" class=\"action-icon\"> <i class=\"mdi mdi-eye\"></i></a>\n                                                <a href=\"javascript:void(0);\" class=\"action-icon\"> <i class=\"mdi mdi-square-edit-outline\"></i></a>\n                                                <a href=\"javascript:void(0);\" class=\"action-icon\"> <i class=\"mdi mdi-delete\"></i></a>\n                                            </td> "), _hoisted_18]);
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td>\n                                                <a href=\"javascript:void(0);\" class=\"action-icon\"> <i class=\"mdi mdi-eye\"></i></a>\n                                                <a href=\"javascript:void(0);\" class=\"action-icon\"> <i class=\"mdi mdi-square-edit-outline\"></i></a>\n                                                <a href=\"javascript:void(0);\" class=\"action-icon\"> <i class=\"mdi mdi-delete\"></i></a>\n                                            </td> "), _hoisted_18]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                             <ul class=\"pagination pagination-rounded justify-content-end my-2\">\n                                <li class=\"page-item\">\n                                    <a class=\"page-link\" href=\"javascript: void(0);\" aria-label=\"Previous\">\n                                        <span aria-hidden=\"true\">«</span>\n                                        <span class=\"visually-hidden\">Previous</span>\n                                    </a>\n                                </li>\n                                <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript: void(0);\">1</a></li>\n                                <li class=\"page-item\"><a class=\"page-link\" href=\"javascript: void(0);\">2</a></li>\n                                <li class=\"page-item\"><a class=\"page-link\" href=\"javascript: void(0);\">3</a></li>\n                                <li class=\"page-item\"><a class=\"page-link\" href=\"javascript: void(0);\">4</a></li>\n                                <li class=\"page-item\"><a class=\"page-link\" href=\"javascript: void(0);\">5</a></li>\n                                <li class=\"page-item\">\n                                    <a class=\"page-link\" href=\"javascript: void(0);\" aria-label=\"Next\">\n                                        <span aria-hidden=\"true\">»</span>\n                                        <span class=\"visually-hidden\">Next</span>\n                                    </a>\n                                </li>\n                            </ul> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Bootstrap5Pagination"], {
+  ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Bootstrap5Pagination"], {
     data: $setup.categorias,
     onPaginationChangePage: $setup.getResults
   }, null, 8
   /* PROPS */
-  , ["data", "onPaginationChangePage"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card-body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end col ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end row ")])])]);
+  , ["data"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card-body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end col ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"mb-3\"> "), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div> "), _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    "class": "btn btn-danger waves-effect waves-light",
+    "data-bs-dismiss": "modal",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $setup.close();
+    })
+  }, "Cancel")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.modal-content ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" /.modal-dialog ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End Modal ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" en content-fluid ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end content ")], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  );
 }
 
 /***/ }),
@@ -21991,21 +22081,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
 /* harmony import */ var _store_old_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store_old/index */ "./resources/js/store_old/index.js");
-/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.mjs");
+/* harmony import */ var pinia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pinia */ "./node_modules/pinia/dist/pinia.mjs");
 /* harmony import */ var pinia_plugin_persist__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! pinia-plugin-persist */ "./node_modules/pinia-plugin-persist/dist/pinia-persist.es.js");
-/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.es.js");
-/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
+/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
 
+ //import {  Bootstrap5Pagination, Bootstrap4Pagination  } from 'laravel-vue-pagination';
+//import VuePaginate from 'vue-paginate'
 
- //import VuePaginate from 'vue-paginate'
 
-
-var store1 = (0,pinia__WEBPACK_IMPORTED_MODULE_6__.createPinia)();
+var store1 = (0,pinia__WEBPACK_IMPORTED_MODULE_5__.createPinia)();
 store1.use(pinia_plugin_persist__WEBPACK_IMPORTED_MODULE_3__["default"]); // ****************************************************************************
 // aqui validamos nuestras rutas vue-router, para dar acceso o no al sistema
 // ****************************************************************************
@@ -22044,7 +22133,7 @@ router.beforeEach((to, from, next) => {
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   components: {
-    App: _views_App__WEBPACK_IMPORTED_MODULE_5__["default"]
+    App: _views_App__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }).use(_router__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_old_index__WEBPACK_IMPORTED_MODULE_2__["default"]).use(store1).mount("#app"); // ****************************************************************************
 
