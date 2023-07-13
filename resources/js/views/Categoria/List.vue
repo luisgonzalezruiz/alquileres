@@ -43,10 +43,16 @@
 
                                 <div class="col-lg-4">
                                     <div class="text-lg-end">
-                                        <button class="btn btn-danger waves-effect waves-light mb-2 me-2"
+                                        <!-- <button class="btn btn-danger waves-effect waves-light mb-2 me-2"
                                             data-bs-toggle="modal" data-bs-target="#addModal">
                                             <i class="mdi mdi-plus-circle me-1"></i> Add New
+                                        </button> -->
+                                        <button class="btn btn-danger waves-effect waves-light mb-2 me-2"
+                                            @click="showModal()" >
+                                            <i class="mdi mdi-plus-circle me-1"></i> Add New
                                         </button>
+
+
                                         <!-- <button type="button" class="btn btn-danger waves-effect waves-light mb-2 me-2"><i class="mdi mdi-basket me-1"></i> Add New Order</button> -->
                                         <!-- <button type="button" class="btn btn-light waves-effect mb-2">Export</button> -->
 
@@ -108,7 +114,10 @@
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <a class="dropdown-item" href="#"><i class="mdi mdi-eye me-2 text-muted font-18 vertical-middle"></i>Show</a>
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-square-edit-outline me-2 text-muted font-18 vertical-middle"></i>Edit</a>
+                                                        <a class="dropdown-item" href="#"
+                                                            data-bs-toggle="modal" data-bs-target="#addModal" @click="showModal(categoria.cat_codigo)" >
+                                                            <i class="mdi mdi-square-edit-outline me-2 text-muted font-18 vertical-middle" ></i>Edit
+                                                        </a>
                                                         <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>
                                                         <a class="dropdown-item" href="#"><i class="mdi mdi-star me-2 font-18 text-muted vertical-middle"></i>Mark as Unread</a>
                                                     </div>
@@ -130,6 +139,18 @@
             <!-- end row -->
 
             <!-- Modal -->
+
+            <!-- <modal :id=1></modal> -->
+             <modal
+                v-bind:id="cate"
+                v-show="isModalVisible"
+                @close="closeModal"
+            />
+
+<!--             <template v-if="isModalVisible">
+            </template> -->
+
+            <!--
             <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -139,23 +160,21 @@
                         </div>
                         <div class="modal-body p-4">
                             <form>
-                                <!-- <div class="mb-3"> -->
                                 <input type="text" class="form-control" hidden id="name" placeholder="">
-                                <!-- </div> -->
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Descripcion</label>
                                     <input type="text" class="form-control" id="name" placeholder="Ingrese la descripcion">
                                 </div>
-
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
                                     <button type="button" class="btn btn-danger waves-effect waves-light" data-bs-dismiss="modal" @click="close()">Cancel</button>
                                 </div>
                             </form>
                         </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
+                    </div>
+                </div>
             </div>
+             -->
             <!-- End Modal -->
 
         </div>
@@ -171,11 +190,18 @@
     import {  ref, reactive, onBeforeMount, onMounted, getCurrentInstance  } from 'vue';
     import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 
+    import modal from './AddEdit';
+
     const categorias = ref({});
+    var cate = ref();
+
+
+    var isModalVisible = ref(false);
 
     onMounted(async () => {
            //await load();
-           await getResults();
+        cate = 0;
+        await getResults();
     });
 
     const getResults = async (page = 1) => {
@@ -183,8 +209,15 @@
         categorias.value = res.data.data;
     }
 
-    function close(){
-        alert('esto cierra el modal');
+    function showModal(id) {
+        cate = id;
+        isModalVisible = true;
+        alert('abro el modal'+ id);
+    }
+
+    function closeModal(){
+        //alert('esto cierra el modal');
+        isModalVisible = false;
     }
     //getResults();
 
