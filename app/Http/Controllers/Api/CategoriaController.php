@@ -57,9 +57,15 @@ class CategoriaController extends Controller
     }
 
 
-    public function show(Categoria $categoria)
+    public function show($id)
     {
-        //
+
+        $categoria = Categoria::all()->find($id);
+
+        return response()->json([
+            'data'=>$categoria,
+            'mensaje'=>'Successfully stored categorias'
+        ],200);
     }
 
 

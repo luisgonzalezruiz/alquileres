@@ -144,6 +144,7 @@
              <modal
                 v-bind:id="cate"
                 v-show="isModalVisible"
+                ref="test"
                 @close="closeModal"
             />
 
@@ -195,13 +196,14 @@
     const categorias = ref({});
     var cate = ref();
 
+    const test = ref(null);
 
     var isModalVisible = ref(false);
 
     onMounted(async () => {
-           //await load();
         cate = 0;
         await getResults();
+        //test.value.getCategoria();
     });
 
     const getResults = async (page = 1) => {
@@ -209,10 +211,10 @@
         categorias.value = res.data.data;
     }
 
+    // esta funcion llama a un metodo que esta en el hijo(modal) y le pasa el parametro
     function showModal(id) {
-        cate = id;
         isModalVisible = true;
-        alert('abro el modal'+ id);
+        test.value.getCategoria(id);
     }
 
     function closeModal(){
@@ -220,6 +222,8 @@
         isModalVisible = false;
     }
     //getResults();
+
+
 
 </script>
 

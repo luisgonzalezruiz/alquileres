@@ -67,16 +67,17 @@
     })
 
     onMounted(async () => {
-        form.cat_codigo = props.id;
+        //form.cat_codigo = props.id;
         //await getCategoria();
     });
 
     // recuperamos la categoria
-    const getCategoria = async () => {
-        //alert('llego')
-        const res = await axios.get('/api/categorias/' + props.id);
-        categoria.value = res.data.data;
-        console.log(categoria);
+    const getCategoria = async (codigo) => {
+        form.cat_codigo = codigo;
+        alert('este es el nro: ' + codigo);
+        const res = await axios.get('/api/categorias/' + codigo);
+        //categoria.value = res.data.data;
+        console.log(res);
     }
 
     function save(){
@@ -89,5 +90,8 @@
         //alert('esto cierra el modal');
     }
     //getResults();
+
+    // habilitamos para que se pueda ejecutar desde el componente padre
+    defineExpose({ getCategoria });
 
 </script>

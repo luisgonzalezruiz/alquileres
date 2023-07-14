@@ -19352,9 +19352,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose,
         emit = _ref.emit;
-
-    __expose();
-
     var props = __props;
     var categoria = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({}); // definimos las propiedades que vamos a recibir del padre
     // definimos los eventos que vamos a emitirle al padre
@@ -19369,9 +19366,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              form.cat_codigo = props.id; //await getCategoria();
-
-            case 1:
             case "end":
               return _context.stop();
           }
@@ -19380,21 +19374,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))); // recuperamos la categoria
 
     var getCategoria = /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(codigo) {
         var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios.get('/api/categorias/' + props.id);
+                form.cat_codigo = codigo;
+                alert('este es el nro: ' + codigo);
+                _context2.next = 4;
+                return axios.get('/api/categorias/' + codigo);
 
-              case 2:
+              case 4:
                 res = _context2.sent;
-                categoria.value = res.data.data;
-                console.log(categoria);
+                //categoria.value = res.data.data;
+                console.log(res);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -19402,7 +19398,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }));
 
-      return function getCategoria() {
+      return function getCategoria(_x) {
         return _ref3.apply(this, arguments);
       };
     }();
@@ -19415,7 +19411,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     function close() {//alert('esto cierra el modal');
     } //getResults();
+    // habilitamos para que se pueda ejecutar desde el componente padre
 
+
+    __expose({
+      getCategoria: getCategoria
+    });
 
     var __returned__ = {
       categoria: categoria,
@@ -19523,13 +19524,13 @@ export default {
 
     var categorias = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)({});
     var cate = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)();
+    var test = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(null);
     var isModalVisible = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              //await load();
               cate = 0;
               _context.next = 3;
               return getResults();
@@ -19570,12 +19571,12 @@ export default {
       return function getResults() {
         return _ref3.apply(this, arguments);
       };
-    }();
+    }(); // esta funcion llama a un metodo que esta en el hijo(modal) y le pasa el parametro
+
 
     function showModal(id) {
-      cate = id;
       isModalVisible = true;
-      alert('abro el modal' + id);
+      test.value.getCategoria(id);
     }
 
     function closeModal() {
@@ -19594,6 +19595,8 @@ export default {
       set cate(v) {
         cate = v;
       },
+
+      test: test,
 
       get isModalVisible() {
         return isModalVisible;
@@ -21870,6 +21873,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["data"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card-body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end col ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end row "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <modal :id=1></modal> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["modal"], {
     id: $setup.cate,
+    ref: "test",
     onClose: $setup.closeModal
   }, null, 8
   /* PROPS */
