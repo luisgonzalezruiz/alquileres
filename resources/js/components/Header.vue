@@ -1,8 +1,8 @@
 <template>
             <!-- Topbar Start -->
-            <div class="navbar-custom">
-                <div class="container-fluid">
-                    <ul class="list-unstyled topnav-menu float-end mb-0">
+            <div class="navbar-custom" style="height:60px;">
+                <div class="container-fluid" style="height:60px;">
+                    <ul class="list-unstyled topnav-menu float-end mb-0" style="height:60px;">
 
                         <li class="d-none d-lg-block">
                             <form class="app-search">
@@ -313,7 +313,7 @@
                     </ul>
 
                     <!-- LOGO -->
-                    <div class="logo-box">
+                    <div class="logo-box" style="height:60px;">
                         <a href="index.html" class="logo logo-dark text-center">
                             <span class="logo-sm">
                                 <img src="ubold/assets/images/logo-sm.png" alt="" height="22">
@@ -499,7 +499,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="clearfix"></div>
+                    <div class="clearfix" style="height:60px;"></div>
                 </div>
             </div>
             <!-- end Topbar -->
