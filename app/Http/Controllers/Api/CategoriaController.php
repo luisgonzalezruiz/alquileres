@@ -22,7 +22,8 @@ class CategoriaController extends Controller
     {
         //$this->authorize('');
         try{
-            $categorias = Categoria::paginate(5);
+            $categorias = Categoria::paginate(10);
+            //$categorias = Categoria::get();
             //return response()->json($categorias);
 
              return response()->json([

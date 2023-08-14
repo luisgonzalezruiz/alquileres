@@ -83,7 +83,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table class="table table-sm table-centered table-nowrap mb-0">
+                                <table class="table table-sm table-centered table-nowrap mb-0 table table-bordered table-hover">
                                     <thead class="table-light">
                                         <tr>
                                             <th>ID</th>
@@ -131,17 +131,61 @@
                 </div> <!-- end col -->
             </div>
             <!-- end row -->
+<!--
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Basic Columns</h4>
+                            <p class="sub-header">
+                                Example of basic columns.
+                            </p>
+
+                            <table data-toggle="table" data-show-columns="false" data-page-list="[5, 10, 20]" data-page-size="5"
+                                data-buttons-class="xs btn-light" data-pagination="true"
+                                class="table table-bordered table-hover table-borderless">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha creación</th>
+                                        <th style="width: 125px; text-align: right;">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr v-for="categoria in categorias2.data" :key="categoria.cat_codigo">
+                                        <td>{{categoria.cat_codigo}}</td>
+                                        <td>{{categoria.cat_descripcion}}</td>
+                                        <td>{{categoria.created_at}} </td>
+                                        <td>
+                                            <div class="btn-group dropdown float-end">
+                                                <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm"
+                                                    data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="#"><i class="mdi mdi-eye me-2 text-muted font-18 vertical-middle"></i>Show</a>
+                                                    <a class="dropdown-item" href="#" @click="showModal(categoria.cat_codigo)" >
+                                                        <i class="mdi mdi-square-edit-outline me-2 text-muted font-18 vertical-middle" ></i>Edit
+                                                    </a>
+                                                    <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>
+                                                    <a class="dropdown-item" href="#"><i class="mdi mdi-star me-2 font-18 text-muted vertical-middle"></i>Mark as Unread</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             -->
+            <!-- end row-->
 
             <!-- Modal -->
 
-            <!-- <modal :id=1></modal> -->
-<!--             <modal
-                v-show="isModalVisible"
-                ref="test"
-                @close="closeModal"
-                @actualizado="prueba"
-            /> -->
-            <!-- Fin Modal -->
+
 
             <button @click="openModal()" type="button"
                     class="btn btn-success mb-2">Open Modal
@@ -164,13 +208,14 @@
 
 <script setup>
 
-    import {  ref, watchEffect, reactive, onBeforeMount, onMounted, getCurrentInstance  } from 'vue';
+    import {  ref, watchEffect, reactive, onBeforeMount,  onMounted, getCurrentInstance  } from 'vue';
     import { Bootstrap5Pagination } from 'laravel-vue-pagination';
 
     // import modal from './AddEdit';
     import Modal from './Modal.vue'
 
     const categorias = ref({});
+    const categorias2 = ref({});
     const search = ref('');
     const categoriaModel = ref(null);
     const modal = ref(false);
@@ -188,10 +233,15 @@
         await getResults();
     });
 
+
+
+
     const getResults = async (page = 1) => {
         //console.log('desde el hijo');
         const res = await axios.get('/api/categorias?page=' + page);
         categorias.value = res.data.data;
+        //categorias2.value = res.data;
+        //console.log(res.data);
     }
 
     // esta funcion llama a un metodo que esta en el hijo(modal) y le pasa el parametro

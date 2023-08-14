@@ -14,6 +14,10 @@
 
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
 
+    <!-- Bootstrap Tables css -->
+    <link href={{ asset("ubold/assets/libs/bootstrap-table/bootstrap-table.min.css") }} rel="stylesheet" type="text/css" id="app-style"/>
+
+
     <!-- App css -->
     <link href={{ asset("ubold/assets/css/config/material/app.min.css") }} rel="stylesheet" type="text/css" id="app-style"/>
 
@@ -35,6 +39,14 @@
 
     <!-- Vendor js -->
     <script src={{ asset("ubold/assets/js/vendor.min.js") }}></script>
+
+    <!-- Bootstrap Tables js -->
+    <script src={{ asset("ubold/assets/libs/bootstrap-table/bootstrap-table.min.js") }}></script>
+
+    <!-- Init js -->
+    <script src={{ asset("ubold/assets/js/pages/bootstrap-tables.init.js") }}></script>
+
+
 
     <!-- App js -->
     <script src={{ asset("ubold/assets/js/app.min.js") }}></script>
