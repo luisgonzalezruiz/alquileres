@@ -229,8 +229,14 @@
         }, 5000); */
     }
 
+    // de esta forma usamos lo qu eesta en el env
+    let api_url = process.env.MIX_APP_URL;
+    console.log("my env variable:");
+    console.log(api_url);
+
     onMounted(async () => {
         await getResults();
+        //console.log( process.env.MIX_PUSHER_APP_KEY) ;
     });
 
 

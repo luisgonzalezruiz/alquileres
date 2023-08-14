@@ -52,7 +52,7 @@ const routes = [
         }
     },
     {
-        path: "/categorias",
+        path: "/categorias/lista",
         name: "Categoria",
         component: Admin,   // con esto usamos la template completa
         children:[
