@@ -7,6 +7,7 @@
     <Sidebar/>
 
     <div class="content-page">
+        <h1>Esto es otro layout</h1>
 
         <router-view></router-view>
 

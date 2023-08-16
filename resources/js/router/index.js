@@ -12,10 +12,12 @@ import NotFound from '../views/NotFound'
 import Login from '../views/Login'
 import Logout from '../views/Logout'
 import Dashboard from '../views/Dashboard'
-import CategoriaList from '../views/Categoria/List'
+//import CategoriaList from '../views/Categoria/List'
 
 import Test from '../views/Test'
 import Prueba from '../views/Prueba'
+
+import categoriasRoutes from './categorias.routes';
 
 
 // instanciamos nuestro store user y lo hacemos una vez creado pinia
@@ -52,19 +54,7 @@ const routes = [
         }
     },
     {
-        path: "/categorias/lista",
-        name: "Categoria",
-        component: Admin,   // con esto usamos la template completa
-        children:[
-            {
-                path:'',
-                name: 'Categoria',
-                component: CategoriaList,  // este es el componente individual
-                meta: {
-                    requiresAuth: true,
-                }
-            }
-        ]
+       ...categoriasRoutes
     },
     {
         path: '/dashboard/:id',
