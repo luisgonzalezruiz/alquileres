@@ -1,9 +1,9 @@
-import { List, AddEdit } from '../views/Marca';
+import { List, AddEdit } from '../views/Marcas';
 import Admin from '../containers/Admin.vue';
 //import Full from '../containers/Full.vue';
 
 export default {
-    path: '/categorias',
+    path: '/marcas',
     component: Admin,
     children: [
         { path: '', component: List, meta: { requiresAuth: true } },
