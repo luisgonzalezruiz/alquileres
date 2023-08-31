@@ -13,6 +13,12 @@ import piniaPersist from 'pinia-plugin-persist'
 
 import App from './views/App'
 
+import { registerLicense } from '@syncfusion/ej2-base'
+
+// Registering Syncfusion license key
+registerLicense('ORg4AjUWIQA/Gnt2V1hhQlJAfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hSn5bdE1iWnpfdXdUTmBb');
+
+
 const store1 = createPinia()
 store1.use(piniaPersist)
 

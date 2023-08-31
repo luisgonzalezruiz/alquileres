@@ -24,6 +24,10 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@syncfusion/ej2-vue-buttons": "^22.2.9",
+        "@syncfusion/ej2-vue-dropdowns": "^22.2.11",
+        "@syncfusion/ej2-vue-grids": "^22.2.11",
+        "@syncfusion/ej2-vue-inputs": "^22.2.9",
         "laravel-vue-pagination": "^4.1.0",
         "pinia": "^2.0.28",
         "pinia-plugin-persist": "^1.0.0",
