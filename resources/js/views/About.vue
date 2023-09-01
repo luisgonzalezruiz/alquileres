@@ -35,6 +35,7 @@
                                             <!-- <input type="search" v-model="search" class="form-control my-1 my-md-0"
                                             id="search" placeholder="Search..."> -->
                                             <input class="e-input" type="text" placeholder="Search..." />
+                                            <input class="e-input" type="text" placeholder="Search..." />
                                         </div>
                                         {{ search }}
 
@@ -123,6 +124,8 @@ const ddldata = ['Badminton', 'Cricket', 'Football', 'Golf', 'Tennis']
 @import "~@syncfusion/ej2-vue-grids/styles/material3.css";
 @import "~@syncfusion/ej2-vue-inputs/styles/material3.css";
 
- @import "~@syncfusion/ej2-vue-dropdowns/styles/material3.css";
+@import "~@syncfusion/ej2-vue-dropdowns/styles/material3.css";
+
+
 
 </style>
