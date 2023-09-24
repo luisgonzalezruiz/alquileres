@@ -17,7 +17,6 @@ class CategoriaController extends Controller
         $this->middleware('auth:api');
     }
 
-
     public function index()
     {
         //$this->authorize('');
